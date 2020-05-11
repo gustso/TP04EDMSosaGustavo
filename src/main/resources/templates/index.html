@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" href="../static/css/style.css">
 <meta charset="ISO-8859-1">
 <title>TP04 Sosa Gustavo</title>
 </head>
@@ -29,7 +29,7 @@
 				</div>
 				<div class="card-deck">
 					<div class="card col-4">
-						<img src="../static/img/logo.jpg" class="card-img" alt="logoFI">
+						<img th:src="@{/img/logo.jpg}" src="../static/img/logo.jpg" class="card-img" alt="logoFI">
 						<div class="card-body">
 							<h3>Card title</h3>
 							<p class="textCard">This is a longer card with supporting
@@ -38,7 +38,7 @@
 						</div>
 					</div>
 					<div class="card col-4">
-						<img src="../static/img/logo.jpg" class="card-img" alt="logoFI">
+						<img th:src="@{/img/logo.jpg}" src="../static/img/logo.jpg" class="card-img" alt="logoFI">
 						<div class="card-body">
 							<h3 class="card-title">Card title</h3>
 							<p class="textCard">This card has supporting text below as a
