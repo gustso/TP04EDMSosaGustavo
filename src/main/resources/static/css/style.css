@@ -4,20 +4,18 @@
   }
   
   div.col-9{
-    width: 100%;
+  width: 100%;
   }
+  
+  div.title{
+	padding: 20px;
+	height: 150px;
+	background-color:#ff8080;	
+	font-family: Arial, Helvetica, sans-serif;
 }
-
-* {
-   outline: 1px solid red !important;
-}
-
-* {    
-    box-sizing: border-box;
 }
 
 .title{
-	animation:
 	padding: 20px;
 	height: 150px;
 	background-color:#004080;	
