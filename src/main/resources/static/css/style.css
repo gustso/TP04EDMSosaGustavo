@@ -108,6 +108,7 @@ h1 {
 }
 
 .card {
+	margin: 1em;
   position: relative;
   display: -ms-flexbox;
   display: flex;
@@ -117,8 +118,8 @@ h1 {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
+  border: 10px solid rgba(0, 0, 0, 0.125);
+  border-radius: 1rem;
 }
 
 .card-body {
@@ -132,14 +133,14 @@ h1 {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     
   }
   
  .card-img {
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  width: 100%;
+  width: 90%;
   padding: 1em;
 }
 
@@ -185,4 +186,26 @@ h1 {
 .publicidad {
 	text-align: right;
 	font-weight: 400;
+}
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table .thead-dark th {
+  color: #fff;
+  background-color: #343a40;
+  border-color: #454d55;
 }

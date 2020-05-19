@@ -10,4 +10,9 @@ public class AplicacionController {
 	public String iniciarSistema() {
 		return "index";
 	}
+	
+	@GetMapping("/servicio")
+	public String brindarServicio() {
+		return "servicio";
+	}
 }

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"
+	href="../static/css/style.css">
+<meta charset="ISO-8859-1">
+<title>tabla</title>
+</head>
+<body>
+	<div class="title">
+		<h1>Servicios para Mascotas</h1>
+	</div>
+	<div class="row">
+		<nav class="nav">
+			<a class="nav-link" href="#">Home</a> <a class="nav-link" href="#">Adoptciones</a>
+			<a class="nav-link" href="#">Veterinarias</a> <a class="nav-link"
+				href="#">Voluntariado</a>
+			<form class="form-inline">
+				<input class="form-control" type="search" placeholder="Search"
+					aria-label="Search">
+				<button class="btn" type="submit">Search</button>
+			</form>
+		</nav>
+	</div>
+
+	<table id="userList" class="table table-bordered table-hover table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<!-- <th scope="col">#</th> -->
+				<th scope="col">ID</th>
+				<th scope="col">Veterinaria</th>
+				<th scope="col">Veterinario</th>
+				<th scope="col">Atenciones</th>
+				<th scope="col">Horario</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<!-- <th scope="row">1</th> -->
+				<td th:text="${usuario.id}">125</td>
+				<td th:text="${usuario.nombreUsuario}">juan</td>
+				<td th:text="${usuario.contrasena}">manuel</td>
+				<td th:text="${usuario.mail}">gustso</td>
+				<td th:text="${usuario.mail}">15 hs</td>
+			</tr>
+		</tbody>
+	</table>
+
+</body>
+</html>
