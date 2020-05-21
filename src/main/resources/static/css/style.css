@@ -16,6 +16,7 @@
 }
 
 
+
 .contenedor{
 	background-color:gray;
 }
@@ -208,4 +209,10 @@ h1 {
   color: #fff;
   background-color: #343a40;
   border-color: #454d55;
+}
+
+.imagen {
+  max-width: 70%;
+  padding:1em;
+  margin:2em;  
 }

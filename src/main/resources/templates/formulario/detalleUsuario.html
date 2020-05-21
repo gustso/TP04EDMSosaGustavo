@@ -1,0 +1,94 @@
+<form class="form" role="form" autocomplete="off"
+	th:object="${userForm}"
+	th:action="${editMode}?@{/editarUsuario}:@{/formularioUsuario}"
+	method="post">
+	<div class="row">
+		<div class="col">
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label form-control-label">Apellido:</label>
+				<div class="col-lg-9">
+					<input class="form-control" type="text"
+						th:field="${userForm.nombreUsuario}">
+					<div class="alert-danger"
+						th:if="${#fields.hasErrors('nombreUsuario')}"
+						th:errors="*{nombreUsuario}">Name Error</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label form-control-label">Email:</label>
+				<div class="col-lg-9">
+					<input class="form-control" type="email"
+						th:field="${userForm.mail}">
+					<div class="alert-danger" th:if="${#fields.hasErrors('mail')}"
+						th:errors="*{mail}">Name Error</div>
+				</div>
+			</div>
+
+			<div class="form-group row"
+				th:if="${editMode==null or editMode==false}">
+				<label class="col-lg-3 col-form-label form-control-label">DNI:</label>
+				<div class="col-lg-9">
+					<input class="form-control" type="password"
+						th:field="${userForm.contrasena}">
+					<div class="alert-danger"
+						th:if="${#fields.hasErrors('contrasena')}"
+						th:errors="*{contrasena}">Name Error</div>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label form-control-label">Nombre:</label>
+				<div class="col-lg-9">
+					<input class="form-control" type="text"
+						th:field="${userForm.nombreUsuario}">
+					<div class="alert-danger"
+						th:if="${#fields.hasErrors('nombreUsuario')}"
+						th:errors="*{nombreUsuario}">Name Error</div>
+				</div>
+			</div>
+			<div class="form-group row"
+				th:if="${editMode==null or editMode==false}">
+				<label class="col-lg-3 col-form-label form-control-label">Fecha
+					Nac:</label>
+				<div class="col-lg-9">
+					<input class="form-control" type="password"
+						th:field="${userForm.confirContrasena}">
+					<div class="alert-danger"
+						th:if="${#fields.hasErrors('confirContrasena')}"
+						th:errors="*{confirContrasena}">Name Error</div>
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<label class="col-lg-3 col-form-label form-control-label">Sexo:</label>
+				<div class="col-lg-9">
+					<div class="form-check">
+
+						<input class="form-check-input" type="radio" name="gridRadios"
+							id="gridRadios1" value="option1" checked> <label
+							class="form-check-label" for="gridRadios1"> Femenino</label>
+					</div>
+					<div class="form-check">
+						<input class="form-check-input" type="radio" name="gridRadios"
+							id="gridRadios2" value="option2"> <label
+							class="form-check-label" for="gridRadios2"> Masculino </label>
+					</div>
+				</div>
+			</div>
+		</div>
+		.
+	</div>
+	<div class="form-group row">
+		<div class="col-lg-12 text-center">
+			<a class="btn btn-secondary"
+				th:href="@{'formularioUsuario/cancelar'}">Cancelar</a> <input
+				type="submit" class="btn btn-primary" value="Save Changes"
+				th:value="${editMode}?'Guardar Usuario':'Crear Usuario'">
+		</div>
+	</div>
+	<div class="alert-danger text-center"
+		th:if="${formUsuarioErrorMessage}"
+		th:text="${formUsuarioErrorMessage}">Name Error</div>
+</form>

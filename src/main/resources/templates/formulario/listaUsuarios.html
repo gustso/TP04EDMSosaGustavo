@@ -1,0 +1,40 @@
+
+<div class="table-responsive">
+	<table id="userList"
+		class="table table-bordered table-hover table-striped">
+		<thead class="thead-light">
+			<tr>
+				<!-- <th scope="col">#</th> -->
+				<th scope="col">ID</th>
+				<th scope="col">Nombre Usuario</th>
+				<th scope="col">Contraseña</th>
+				<th scope="col">E-mail</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "usuario : ${listaUsuarios}">
+				<!-- <th scope="row">1</th> -->
+				<td th:text="${usuario.id}"></td>
+				<td th:text="${usuario.nombreUsuario}"></td>
+				<td th:text="${usuario.contrasena}"></td>
+				<td th:text="${usuario.mail}"></td>
+				<td><a href="#" th:href="@{'/editarUsuario/'+${usuario.id}}"><i class="fas fa-edit"></i></a> | 
+				<a href="#" th:onclick="'javascript:confirmDelete(\''+${usuario.id}+'\');'"><i class="fas fa-user-times"></i></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="alert-danger text-center" th:if="${listErrorMessage}" th:text="${listErrorMessage}">Name Error</div>
+</div>
+
+<script type="text/javascript">
+function confirmDelete(id){
+	$('#modalEliminar').modal('show');
+	$("#identificadorUsuarioHiddenInput").val(id);
+}
+
+function eliminarUsuario(){
+	var id = $("#identificadorUsuarioHiddenInput").val();
+    window.location = "eliminarUsuario/"+id;
+}
+</script>
