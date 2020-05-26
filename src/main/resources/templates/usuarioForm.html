@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head> 
+<link th:rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 
-<!-- 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
- -->
+<!--  estos no tengo en el proyecto -->
+<link th:rel="stylesheet" th:href="@{/css/tempusdominus-bootstrap-4.min.css}"/>
+<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
 
-<link rel="stylesheet" type="text/css"
-	href="../static/css/bootstrap.css">
-<script src="../static/js/jquery-3.4.1.js"></script>
-<script src="../static/js/bootstrap.js"></script>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
+		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+		
+		<!--  estos no tengo en el proyecto -->
+		<script th:src="@{/js/moment.min.js}"></script>		
+		<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}"></script>
 
 
-
-<meta charset="ISO-8859-1">
-<title>Formulario Usuario</title>
+<meta charset="utf-8">
+<title>Formulario Usuarios</title>
 </head>
 <body>
 	<div class="container">
@@ -38,43 +38,35 @@
 						<h4>Usuarios</h4>
 					</div>
 					<div class="card-body">
-						<form class="form" role="form" autocomplete="off"
-							th:object="${userForm}"
-							th:action="${editMode}?@{/editarUsuario}:@{/formularioUsuario}"
-							method="post">
+						<form class="form" role="form" autocomplete="off" method="post">
 							<div class="row">
 								<div class="col">
+								
 									<div class="form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">Apellido:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="text"
-												th:field="${userForm.nombreUsuario}">
-											<div class="alert-danger"
-												th:if="${#fields.hasErrors('nombreUsuario')}"
-												th:errors="*{nombreUsuario}">Name Error</div>
+											<input class="form-control" type="text">											
 										</div>
 									</div>
 
 									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">Email:</label>
+										<label class="col-lg-3 col-form-label form-control-label">Dirección:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="email"
-												th:field="${userForm.mail}">
-											<div class="alert-danger"
-												th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">Name
-												Error</div>
+											<input class="form-control" type="text">											
+										</div>
+									</div>
+									
+									<div class="form-group row">
+										<label class="col-lg-3 col-form-label form-control-label">DNI:</label>
+										<div class="col-lg-9">
+											<input class="form-control" type="text">											
 										</div>
 									</div>
 
-									<div class="form-group row"
-										th:if="${editMode==null or editMode==false}">
-										<label class="col-lg-3 col-form-label form-control-label">DNI:</label>
+									<div class="form-group row">
+										<label class="col-lg-3 col-form-label form-control-label">Contraseña:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="password"
-												th:field="${userForm.contrasena}">
-											<div class="alert-danger"
-												th:if="${#fields.hasErrors('contrasena')}"
-												th:errors="*{contrasena}">Name Error</div>
+											<input class="form-control" type="password">											
 										</div>
 									</div>
 								</div>
@@ -82,41 +74,57 @@
 									<div class="form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">Nombre:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="text"
-												th:field="${userForm.nombreUsuario}">
-											<div class="alert-danger"
-												th:if="${#fields.hasErrors('nombreUsuario')}"
-												th:errors="*{nombreUsuario}">Name Error</div>
+											<input class="form-control" type="text">																						
 										</div>
 									</div>
-									<div class="form-group row"
-										th:if="${editMode==null or editMode==false}">
-										<label class="col-lg-3 col-form-label form-control-label">Fecha
-											Nac:</label>
-										<div class="col-lg-9">
-											<input class="form-control" type="password"
-												th:field="${userForm.confirContrasena}">
-											<div class="alert-danger"
-												th:if="${#fields.hasErrors('confirContrasena')}"
-												th:errors="*{confirContrasena}">Name Error</div>
-										</div>
+									
+									<div class="form-group row">
+										<label for="fecha" class="col-lg-3 col-form-label form-control-label">Fecha Nac:</label>
+					                    <div class="col-lg-9 input-group date" id="datetimepicker1" data-target-input="nearest">
+					                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
+					                               id="fecha" placeholder="Fecha"/>
+					                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+					                            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+					                        </div>					                        
+					                    </div>									
 									</div>
+									
+									<div class="form-group row">
+										<label for="fecha" class="col-lg-3 col-form-label form-control-label">Fecha Alta:</label>
+					                    <div class="col-lg-9 input-group date" id="datetimepicker2" data-target-input="nearest">
+					                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"
+					                               id="fecha" placeholder="ingresar Fecha de Alta"/>
+					                        <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+					                            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+					                        </div>					                        
+					                    </div>									
+									</div>									
+
+									<script type="text/javascript">
+            							$(function () {
+							                $('#datetimepicker1').datetimepicker({
+							                    format: 'L'							                    
+							                });
+							                $('#datetimepicker2').datetimepicker({
+							                    format: 'L'							                    
+							                });
+							            });
+							        </script>
 
 									<div class="form-group row">
-										<label class="col-lg-3 col-form-label form-control-label">Sexo:</label>
+										<label class="col-lg-3 col-form-label form-control-label">Tipo:</label>
 										<div class="col-lg-9">
 											<div class="form-check">
-
-												<input class="form-check-input" type="radio"
-													name="gridRadios" id="gridRadios1" value="option1" checked>
-												<label class="form-check-label" for="gridRadios1">
-													Femenino</label>
+												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+												<label class="form-check-label" for="gridRadios1">SOCIO</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input" type="radio"
-													name="gridRadios" id="gridRadios2" value="option2">
-												<label class="form-check-label" for="gridRadios2">
-													Masculino </label>
+												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+												<label class="form-check-label" for="gridRadios2">ADMIN</label>
+											</div>
+											<div class="form-check">
+												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+												<label class="form-check-label" for="gridRadios2">CONSULTOR</label>
 											</div>
 										</div>
 									</div>
@@ -164,18 +172,18 @@
 							<tbody>
 								<tr>
 									<!-- <th scope="row">1</th> -->
-									<td th:text="${usuario.id}">125</td>
-									<td th:text="${usuario.nombreUsuario}">juan</td>
-									<td th:text="${usuario.contrasena}">manuel</td>
-									<td th:text="${usuario.mail}">gustso</td>
-									<td th:text="${usuario.mail}">15 hs</td>
+									<td >125</td>
+									<td >juan</td>
+									<td >manuel</td>
+									<td >gustso</td>
+									<td >15 hs</td>
 								</tr>
 								<tr>
-									<td th:text="${usuario.id}">125</td>
-									<td th:text="${usuario.nombreUsuario}">juan</td>
-									<td th:text="${usuario.contrasena}">manuel</td>
-									<td th:text="${usuario.mail}">gustso</td>
-									<td th:text="${usuario.mail}">15 hs</td>
+									<td >125</td>
+									<td >juan</td>
+									<td >manuel</td>
+									<td >gustso</td>
+									<td >15 hs</td>
 								</tr>
 									
 							</tbody>
@@ -184,18 +192,6 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="tab-pane fade show" th:classappend="${formTab}" id="form"
-			role="tabpanel" aria-labelledby="form-tab">
-			<div class="card">
-				<div class="card-header">
-					<h4>Informacion del Usuario</h4>
-				</div>
-				<div class="card-body"></div>
-			</div>
-		</div>
-
-
 
 	</div>
 
