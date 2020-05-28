@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ar.edu.unju.edm.modelo.EquipoFutbol;
+import ar.edu.unju.edm.modelo.Usuario;
+import ar.edu.unju.edm.service.IUsuarioService;
 
 @SpringBootApplication
 public class Tp04SosaGustavoApplication implements CommandLineRunner{
@@ -14,6 +16,9 @@ public class Tp04SosaGustavoApplication implements CommandLineRunner{
 	@Autowired
 	private EquipoFutbol equipo;
 
+	@Autowired
+	private IUsuarioService usuarioService;
+	
 	public static void main(String[] args) {
 		//equipo = new EquipoFutbol("GyE");
 		//equipo.setNombre("GyE");
@@ -30,6 +35,9 @@ public class Tp04SosaGustavoApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		equipo.setNombre("GyE");
-		System.out.println(equipo);	
+		System.out.println(equipo);
+		
+		usuarioService.crear("Sosa");
+		
 	}
 }
