@@ -16,8 +16,8 @@ public class Tp04SosaGustavoApplication implements CommandLineRunner{
 	@Autowired
 	private EquipoFutbol equipo;
 
-	@Autowired
-	private IUsuarioService usuarioService;
+	//@Autowired
+	//private IUsuarioService usuarioService;
 	
 	public static void main(String[] args) {
 		//equipo = new EquipoFutbol("GyE");
@@ -36,8 +36,8 @@ public class Tp04SosaGustavoApplication implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		equipo.setNombre("GyE");
 		System.out.println(equipo);
-		
-		usuarioService.crear("Sosa");
+	//	System.out.println(usuarioService.encontrarUsuario("sosa").getApellido());
+		//usuarioService.crear("Sosa");
 		
 	}
 }

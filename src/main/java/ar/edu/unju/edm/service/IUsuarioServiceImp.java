@@ -1,23 +1,26 @@
 package ar.edu.unju.edm.service;
 
 import java.awt.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.modelo.Usuario;
-import ar.edu.unju.edm.repository.IUsuario;
+import ar.edu.unju.edm.repository.IUsuarioRepository;
+//import ar.edu.unju.edm.repository.IUsuarioRepositoryImp;
 
 @Service
 public class IUsuarioServiceImp implements IUsuarioService{
 	
 	@Autowired
-	public IUsuario iUsuario;
+	IUsuarioRepository iUsuario;
 
 	@Override
-	public void crear(String apellido) {
+	public void crear(Usuario unUsuario) {
 		// TODO Auto-generated method stub
-		iUsuario.crear(apellido);
+		System.out.println("AAAAAAAAAAAAAAAAAAAAa: "+ unUsuario.getApellido());
+		iUsuario.save(unUsuario);
 	}
 
 	
@@ -41,6 +44,14 @@ public class IUsuarioServiceImp implements IUsuarioService{
 	public List[] listar() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public Optional<Usuario> encontrarUsuario(Long id) {
+		// TODO Auto-generated method stub
+		Optional<Usuario> usuarioEncontrado = iUsuario.findById(id);
+		return usuarioEncontrado;
 	}
 
 }

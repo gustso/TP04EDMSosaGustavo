@@ -3,22 +3,41 @@ package ar.edu.unju.edm.modelo;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-import org.springframework.stereotype.Component;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-@Component
+import org.hibernate.annotations.GenericGenerator;
+
+//import org.springframework.stereotype.Component;
+
+@Entity
 public class Usuario implements Serializable{
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
+	@GenericGenerator(name="native",strategy="native")
 	private Long id;
+	@Column
 	private String nombre;
+	@Column
 	private String apellido;
+	@Column
 	private LocalDate fechaNac;
+	@Column
 	private LocalDate fechaAlta;
+	@Column
 	private String direccion;
+	@Column
 	private String tipo;
-	private String password;
+	@Column
+	private String password;	
 	
 	public Usuario() {
 		// TODO Auto-generated constructor stub
