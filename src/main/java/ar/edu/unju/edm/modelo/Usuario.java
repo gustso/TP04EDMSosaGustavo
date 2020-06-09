@@ -8,8 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 //import org.springframework.stereotype.Component;
 
@@ -25,18 +29,26 @@ public class Usuario implements Serializable{
 	@GenericGenerator(name="native",strategy="native")
 	private Long id;
 	@Column
+	@NotBlank
 	private String nombre;
 	@Column
+	@NotBlank(message="El Apellido no puede quedar en blanco")
 	private String apellido;
-	@Column
+	@Column	
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate fechaNac;
 	@Column
+	@NotNull
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	private LocalDate fechaAlta;
 	@Column
 	private String direccion;
 	@Column
+	@NotBlank
 	private String tipo;
 	@Column
+	@NotBlank
+	@Size(min=8, message="Su contraseña debe tener como mínimo 8 caracteres")
 	private String password;	
 	
 	public Usuario() {

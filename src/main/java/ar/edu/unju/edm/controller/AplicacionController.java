@@ -2,11 +2,13 @@ package ar.edu.unju.edm.controller;
 
 
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,26 +48,34 @@ public class AplicacionController {
 	
 	@GetMapping("/formulario")
 	public String cargarFormulario(Model model) {
-		model.addAttribute("userForm", new Usuario());		
+		model.addAttribute("usuarioDelForm", new Usuario());
+		model.addAttribute("listaUsuarios", usuarioService.listarTodos());
+		model.addAttribute("formTab", "active");
 		return "usuarioForm";
 	}
 	
 	@PostMapping("/formulario")
-	public String crearUsuario(@ModelAttribute("userForm") Usuario usuario, ModelMap model) {		
+	public String crearUsuario(@Valid @ModelAttribute("usuarioDelForm") Usuario usuario, BindingResult result, ModelMap model) {
+		//agregado Valid (en el modelo tambien) y BindingResult
+		if(result.hasErrors()) {
+			//si da error el objeto recibido se vuelve a enviar a la vista
+			model.addAttribute("usarioDelForm", usuario);			
+			model.addAttribute("formTab", "active");	
+		} else {		
 			try {
 				usuarioService.crear(usuario);
-				model.addAttribute("userForm", new Usuario());			
-				model.addAttribute("listTab", "active");				
+				model.addAttribute("usuarioDelForm", new Usuario());
+				model.addAttribute("listTab", "active");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				// pasar las excepciones al html
 				model.addAttribute("formUsuarioErrorMessage",e.getMessage());
-				model.addAttribute("userForm", usuario);			
+				model.addAttribute("usuarioDelForm", usuario);			
+				model.addAttribute("listaUsuarios", usuarioService.listarTodos());
 				model.addAttribute("formTab", "active");				
-			}		
-		
-		//model.addAttribute("listaUsuarios", usuarioService.getAllUser());
-		//model.addAttribute("roles", rolRepository.findAll());
+			}				
+		model.addAttribute("listaUsuarios", usuarioService.listarTodos());		
+	}
 		return "usuarioForm";
 	}
 }

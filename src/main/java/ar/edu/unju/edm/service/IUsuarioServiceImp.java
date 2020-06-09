@@ -1,6 +1,5 @@
 package ar.edu.unju.edm.service;
 
-import java.awt.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,7 @@ public class IUsuarioServiceImp implements IUsuarioService{
 
 	@Override
 	public void crear(Usuario unUsuario) {
-		// TODO Auto-generated method stub
-		System.out.println("AAAAAAAAAAAAAAAAAAAAa: "+ unUsuario.getApellido());
+		// TODO Auto-generated method stub		
 		iUsuario.save(unUsuario);
 	}
 
@@ -40,18 +38,19 @@ public class IUsuarioServiceImp implements IUsuarioService{
 		
 	}
 
-	@Override
-	public List[] listar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+	
 	@Override
 	public Optional<Usuario> encontrarUsuario(Long id) {
 		// TODO Auto-generated method stub
 		Optional<Usuario> usuarioEncontrado = iUsuario.findById(id);
 		return usuarioEncontrado;
+	}
+
+
+	@Override
+	public Iterable<Usuario> listarTodos() {
+		// TODO Auto-generated method stub
+		return iUsuario.findAll();
 	}
 
 }
