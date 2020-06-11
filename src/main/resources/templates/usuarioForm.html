@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head> 
-<link th:rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<head>
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
 
 <!--  estos no tengo en el proyecto -->
-<link th:rel="stylesheet" th:href="@{/css/tempusdominus-bootstrap-4.min.css}"/>
-<link th:rel="stylesheet" th:href="@{/webjars/font-awesome/5.11.2/css/all.css} "/>
+<link th:rel="stylesheet"
+	th:href="@{/css/tempusdominus-bootstrap-4.min.css}" />
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
 
-<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}" type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>		
-		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}" type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
-		<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}" type="text/javascript" src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-		
-		<!--  estos no tengo en el proyecto -->
-		<script th:src="@{/js/moment.min.js}"></script>		
-		<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+	type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+	type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+	type="text/javascript"
+	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!--  estos no tengo en el proyecto -->
+<script th:src="@{/js/moment.min.js}"></script>
+<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}"></script>
 
 
 <meta charset="utf-8">
@@ -23,52 +30,50 @@
 	<div class="container">
 
 		<ul class="nav nav-tabs" role="tablist">
-			<li class="nav-item"><a id="formulario-tab" th:classappend="${formTab}" 
-				class="nav-link" href="#formulario" data-toggle="tab"
-				role="tab" aria-controls="formulario" aria-selected="true">Formulario</a></li>
-			<li class="nav-item"><a id="lista-tab"  class="nav-link" th:classappend="${listTab}"
-				href="#lista" data-toggle="tab" role="tab" aria-controls="lista"
-				aria-selected="false">Lista</a></li>
+			<li class="nav-item">
+				<a id="formulario-tab"	th:classappend="${formTab}" class="nav-link" href="#formulario"
+				data-toggle="tab" role="tab" aria-controls="formulario"	aria-selected="true">Formulario</a></li>
+			<li class="nav-item">
+				<a id="lista-tab" class="nav-link" th:classappend="${listTab}" href="#lista" data-toggle="tab"
+				role="tab" aria-controls="lista" aria-selected="false">Lista</a></li>
 		</ul>
 		<div class="tab-content">
-			<div class="tab-pane fade show" id="formulario" th:classappend="${formTab}"
-				role="tabpanel" aria-labelledby="formulario-tab">
+			<div class="tab-pane fade show" id="formulario"	th:classappend="${formTab}" role="tabpanel"	aria-labelledby="formulario-tab">
 				<div class="card">
 					<div class="card-header">
 						<h4>Usuarios</h4>
 					</div>
 					<div class="card-body">
-						<form class="form" role="form" autocomplete="off" th:object="${usuarioDelForm}" th:action="@{/formulario}" method="post" >
+						<form class="form" role="form" autocomplete="off" th:object="${usuarioDelForm}" th:action="@{/formulario}" method="post">
 							<div class="row">
 								<div class="col">
-								
 									<div class="form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">Apellido:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="text" th:field="${usuarioDelForm.apellido}">
-											<div class="alert-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Name Error</div>											
+											<input class="form-control" type="text"	th:field="${usuarioDelForm.apellido}">
+											<div class="alert-danger" th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Name Error</div>
 										</div>
 									</div>
 
 									<div class="form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">Dirección:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="text" th:field="${usuarioDelForm.direccion}">											
+											<input class="form-control" type="text"	th:field="${usuarioDelForm.direccion}">
 										</div>
 									</div>
-									
+
 									<div class="form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">DNI:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="text">											
+											<input class="form-control" type="text">
 										</div>
 									</div>
 
 									<div class="form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">Contraseña:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="password" th:field="${usuarioDelForm.password}">
-											<div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>											
+											<input class="form-control" type="password"	th:field="${usuarioDelForm.password}">
+											<div class="alert-danger" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Name Error</div>
 										</div>
 									</div>
 								</div>
@@ -76,61 +81,66 @@
 									<div class="form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">Nombre:</label>
 										<div class="col-lg-9">
-											<input class="form-control" type="text" th:field="${usuarioDelForm.nombre}">			
-											<div class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name Error</div>																			
+											<input class="form-control" type="text"	th:field="${usuarioDelForm.nombre}">
+											<div class="alert-danger" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Name	Error</div>
 										</div>
 									</div>
-									
+
 									<div class="form-group row">
 										<label for="fecha" class="col-lg-3 col-form-label form-control-label">Fecha Nac:</label>
-					                    <div class="col-lg-9 input-group date" id="datetimepicker1" data-target-input="nearest">
-					                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1"
-					                               id="fecha" placeholder="Fecha" th:field="${usuarioDelForm.fechaNac}"/>
-					                        <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-					                            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-					                        </div>					                        
-					                    </div>									
+										<div class="col-lg-9 input-group date" id="datetimepicker1"	data-target-input="nearest">
+											<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="fecha"
+												placeholder="Fecha" th:field="${usuarioDelForm.fechaNac}" />
+											<div class="input-group-append"	data-target="#datetimepicker1" data-toggle="datetimepicker">
+												<div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+											</div>
+										</div>
 									</div>
-									
+
 									<div class="form-group row">
-										<label for="fecha" class="col-lg-3 col-form-label form-control-label">Fecha Alta:</label>										
-					                    <div class="col-lg-9 input-group date" id="datetimepicker2" data-target-input="nearest">
-					                        <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2"
-					                               id="fecha" placeholder="ingresar Fecha de Alta" th:field="${usuarioDelForm.fechaAlta}"/>
-					                       <div class="alert-danger" th:if="${#fields.hasErrors('fechaAlta')}" th:errors="*{fechaAlta}">Name Error</div>
-					                        <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
-					                            <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-					                        </div>					                        
-					                    </div>									
-									</div>									
+										<label for="fecha"
+											class="col-lg-3 col-form-label form-control-label">Fecha Alta:</label>
+										<div class="col-lg-9 input-group date" id="datetimepicker2"	data-target-input="nearest">
+											<input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker2" id="fecha"
+												placeholder="ingresar Fecha de Alta" th:field="${usuarioDelForm.fechaAlta}" />											
+											<div class="input-group-append"	data-target="#datetimepicker2" data-toggle="datetimepicker">
+												<div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+											</div>
+											<div class="alert-danger" th:if="${#fields.hasErrors('fechaAlta')}"	th:errors="*{fechaAlta}">Name Error</div>
+										</div>
+										
+									</div>
 
 									<script type="text/javascript">
-            							$(function () {
-							                $('#datetimepicker1').datetimepicker({
-							                	format:"DD/MM/YYYY"							                    					                    	
-							                });
-							                $('#datetimepicker2').datetimepicker({
-							                	format:"DD/MM/YYYY"							                    							                    
-							                });
-							            });
-							        </script>
+										$(function() {
+											$('#datetimepicker1').datetimepicker({
+														format : "DD/MM/YYYY"
+													});
+											$('#datetimepicker2').datetimepicker({
+														format : "DD/MM/YYYY"
+													});
+										});
+									</script>
 
 									<div class="form-group row">
 										<label class="col-lg-3 col-form-label form-control-label">Tipo:</label>
 										<div class="col-lg-9">
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" th:field="${usuarioDelForm.tipo}" value="SOCIO" checked="checked">
-												<label class="form-check-label" for="gridRadios1">SOCIO</label>
+												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
+													th:field="${usuarioDelForm.tipo}" value="SOCIO"	checked="checked"> 
+													<label class="form-check-label"	for="gridRadios1">SOCIO</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="ADMIN" th:field="${usuarioDelForm.tipo}">
-												<label class="form-check-label" for="gridRadios2">ADMIN</label>
+												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="ADMIN"
+													th:field="${usuarioDelForm.tipo}"> 
+													<label	class="form-check-label" for="gridRadios2">ADMIN</label>
 											</div>
 											<div class="form-check">
-												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="CONSULTOR" th:field="${usuarioDelForm.tipo}">
-												<label class="form-check-label" for="gridRadios2">CONSULTOR</label>
+												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="CONSULTOR"
+													th:field="${usuarioDelForm.tipo}"> 
+													<label	class="form-check-label" for="gridRadios3">CONSULTOR</label>
 											</div>
-											<div class="alert-danger" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Name Error</div>
+											<div class="alert-danger" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Name	Error</div>
 										</div>
 									</div>
 								</div>
@@ -138,31 +148,45 @@
 							</div>
 							<div class="form-group row">
 								<div class="col-lg-12 text-center">
-									<a class="btn btn-secondary"
-										th:href="@{'formularioUsuario/cancelar'}">Cancelar</a> 
-										<input type="submit" class="btn btn-primary" value="Save Changes"
-										th:value="${editMode}?'Guardar Usuario':'Crear Usuario'">
+									<a class="btn btn-secondary" th:href="@{'formulario/cancelar'}">Cancelar</a>
+									<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAgregar">Guardar Usuario</button>
 								</div>
 							</div>
-							<div class="alert-danger text-center"
-								th:if="${formUsuarioErrorMessage}"
-								th:text="${formUsuarioErrorMessage}">Name Error</div>
+							<div class="alert-danger text-center" th:if="${formUsuarioErrorMessage}" th:text="${formUsuarioErrorMessage}">Name Error</div>
+
+							<!-- Modal -->
+							<div class="modal fade" id="modalAgregar" tabindex="-1"	role="dialog" aria-labelledby="agregarModalTitulo"	aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="agregarModalTitulo">Confirmar Agregar</h5>
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body"><h6>Are you sure you want to save this user?</h6></div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary"	data-dismiss="modal">Close</button>
+											<input type="submit" class="btn btn-primary" value="Save Changes">
+										</div>
+									</div>
+								</div>
+							</div>
+
 						</form>
 
 					</div>
 				</div>
 			</div>
-			<div class="tab-pane fade show" id="lista" role="tabpanel" th:classappend="${listTab}"
-						aria-labelledby="lista-tab">
+			<div class="tab-pane fade show" id="lista" role="tabpanel" th:classappend="${listTab}" aria-labelledby="lista-tab">
 				<div class="card">
 					<div class="card-header">
 						<h4>Listado de Usuarios</h4>
 					</div>
-					<div class="card-body">	
-						<table id="userList"
-							class="table table-bordered table-hover table-striped">
+					<div class="card-body">
+						<table id="userList" class="table table-bordered table-hover table-striped">
 							<thead class="thead-dark">
-								<tr>																	
+								<tr>
 									<th scope="col">ID</th>
 									<th scope="col">Apellido</th>
 									<th scope="col">Nombre</th>
@@ -174,7 +198,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each = "usuario : ${listaUsuarios}">
+								<tr th:each="usuario : ${listaUsuarios}">
 									<td th:text="${usuario.id}"></td>
 									<td th:text="${usuario.apellido}"></td>
 									<td th:text="${usuario.nombre}"></td>
@@ -183,17 +207,14 @@
 									<td th:text="${usuario.direccion}"></td>
 									<td th:text="${usuario.tipo}"></td>
 									<td><i class="fa fa-edit"></i><i class="fa fa-trash-alt"></i></td>
-								</tr>									
+								</tr>
 							</tbody>
 						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</div>
-
-
 
 </body>
 </html>

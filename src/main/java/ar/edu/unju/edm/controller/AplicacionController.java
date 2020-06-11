@@ -60,7 +60,8 @@ public class AplicacionController {
 		if(result.hasErrors()) {
 			//si da error el objeto recibido se vuelve a enviar a la vista
 			model.addAttribute("usarioDelForm", usuario);			
-			model.addAttribute("formTab", "active");	
+			model.addAttribute("formTab", "active");
+			model.addAttribute("listaUsuarios", usuarioService.listarTodos());
 		} else {		
 			try {
 				usuarioService.crear(usuario);
@@ -73,9 +74,13 @@ public class AplicacionController {
 				model.addAttribute("usuarioDelForm", usuario);			
 				model.addAttribute("listaUsuarios", usuarioService.listarTodos());
 				model.addAttribute("formTab", "active");				
-			}				
-		model.addAttribute("listaUsuarios", usuarioService.listarTodos());		
+			}								
 	}
 		return "usuarioForm";
+	}
+	
+	@GetMapping("/formulario/cancelar")
+	public String cancelarEditarUsuario(ModelMap model){		
+		return "redirect:/formulario";
 	}
 }
