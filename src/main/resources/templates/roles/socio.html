@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+
+<!--  estos no tengo en el proyecto -->
+<link th:rel="stylesheet"
+	th:href="@{/css/tempusdominus-bootstrap-4.min.css}" />
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css} " />
+
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
+	type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+	type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+	type="text/javascript"
+	src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<!--  estos no tengo en el proyecto -->
+<script th:src="@{/js/moment.min.js}"></script>
+<script th:src="@{/js/tempusdominus-bootstrap-4.min.js}"></script>
+
+
+<meta charset="utf-8">
+<title>Socio App</title>
+</head>
+<body>
+<div class="container">
+<form class="form" th:object="${usuarioDelForm}">
+  <div class="form-group">
+    <label for="dni">DNI</label>
+    <input type="text" class="form-control" id="dni" aria-describedby="dniHelp" placeholder="Ingrese DNI" th:field="${usuarioDelForm.dni}">    
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>    
+  <div class="form-group">
+  <label> Usuario Logueado: </label>
+  <p th:text="${usuarioDelForm.apellido}"></p>
+  </div>
+</form>
+SOCIO
+</div>
+</body>
+</html>

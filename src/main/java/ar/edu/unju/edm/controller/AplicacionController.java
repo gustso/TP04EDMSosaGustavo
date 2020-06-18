@@ -60,8 +60,7 @@ public class AplicacionController {
 		if(result.hasErrors()) {
 			//si da error el objeto recibido se vuelve a enviar a la vista
 			model.addAttribute("usarioDelForm", usuario);			
-			model.addAttribute("formTab", "active");
-			model.addAttribute("listaUsuarios", usuarioService.listarTodos());
+			model.addAttribute("formTab", "active");			
 		} else {		
 			try {
 				usuarioService.crear(usuario);
@@ -71,10 +70,10 @@ public class AplicacionController {
 				// TODO Auto-generated catch block
 				// pasar las excepciones al html
 				model.addAttribute("formUsuarioErrorMessage",e.getMessage());
-				model.addAttribute("usuarioDelForm", usuario);			
-				model.addAttribute("listaUsuarios", usuarioService.listarTodos());
+				model.addAttribute("usuarioDelForm", usuario);				
 				model.addAttribute("formTab", "active");				
 			}								
+			model.addAttribute("listaUsuarios", usuarioService.listarTodos());
 	}
 		return "usuarioForm";
 	}

@@ -11,4 +11,6 @@ public interface IUsuarioService {
 	public void eliminar();
 	public Iterable<Usuario> listarTodos();
 	public Optional<Usuario> encontrarUsuario(Long id);
+	public Usuario encontrarUsuarioDni(Usuario usuario) throws Exception;	
+	public String redirigirUsuario(Usuario usuario);	
 }

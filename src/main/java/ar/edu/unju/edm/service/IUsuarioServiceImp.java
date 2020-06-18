@@ -20,7 +20,6 @@ public class IUsuarioServiceImp implements IUsuarioService{
 		// TODO Auto-generated method stub		
 		iUsuario.save(unUsuario);
 	}
-
 	
 	//Interfaz de Usuario			Controller			Service			Repository			Modelo				Datos
 	//HTML																			Clases (Usuario)	BD MySQL
@@ -52,5 +51,31 @@ public class IUsuarioServiceImp implements IUsuarioService{
 		// TODO Auto-generated method stub
 		return iUsuario.findAll();
 	}
+
+
+	@Override
+	public Usuario encontrarUsuarioDni(Usuario usuario) throws Exception {		
+		Usuario usuarioEncontrado = iUsuario.findByDni(usuario.getDni()).orElseThrow(()-> new Exception("El Usuario no Existe"));
+		if (!usuarioEncontrado.getPassword().equals(usuario.getPassword())) {
+			usuarioEncontrado = null;
+		}		
+		return usuarioEncontrado;
+	}
+
+	@Override
+	public String redirigirUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		String pagina = "";
+		if (usuario.getTipo().equals("ADMIN")) {
+			pagina = "/roles/admin";
+		}else {
+			if (usuario.getTipo().equals("SOCIO")) {
+				pagina = "/roles/socio";
+			}else {
+				pagina = "/roles/consultor";
+			}
+		}		
+		return pagina;
+	}		
 
 }

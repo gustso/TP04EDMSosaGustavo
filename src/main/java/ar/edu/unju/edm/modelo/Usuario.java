@@ -14,9 +14,11 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.stereotype.Component;
 
 //import org.springframework.stereotype.Component;
 
+@Component
 @Entity
 public class Usuario implements Serializable{
 	/**
@@ -28,6 +30,8 @@ public class Usuario implements Serializable{
 	@GeneratedValue(strategy=GenerationType.AUTO,generator="native")
 	@GenericGenerator(name="native",strategy="native")
 	private Long id;
+	@Column
+	private Integer dni;
 	@Column
 	@NotBlank
 	private String nombre;
@@ -135,6 +139,14 @@ public class Usuario implements Serializable{
 	@Override
 	public String toString() {
 		return "Usuario [apellido=" + apellido + "]";
+	}	
+
+	public Integer getDni() {
+		return dni;
+	}
+
+	public void setDni(Integer dni) {
+		this.dni = dni;
 	}
 
 	@Override
